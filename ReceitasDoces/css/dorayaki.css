@@ -3,13 +3,18 @@
     padding: 0;
 }
 
+.logo img {
+    height: 50px; /* Ajuste a altura conforme necessário */
+    width: auto;
+}
+
 body {
     background-color: #f0f0f0;
     font-family: 'Lato', sans-serif;
 }
 
 .banner {
-    background-image: url(../images/RecipeSalg/missoshiro.jpg);
+    background-image: url(../imgdoce/dorayakii.jpg);
     background-position: center;
     background-size: cover;
     height: 300px;
@@ -24,13 +29,22 @@ body {
 }
 
 .card {
-    width: 500px;
-    margin: auto;
-    padding: 50px;
+    width: 90%; /* Ajustq a largura para um percentual da tela */
+    max-width: 700px; /* Define a largura máxima */
+    margin: 50px auto; /* Centraliza o card com margens automáticas */
+    padding: 20px; /* Ajusta o preenchimento para ser mais responsivo */
     background-color: white;
-    margin: 50px auto;
     border-radius: 5px;
     font-weight: 300;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve para um efeito visual */
+    box-sizing: border-box; 
+}
+
+/* Media query para telas menores */
+@media (max-width: 768px) {
+    .card {
+        padding: 15px; /* Reduz o preenchimento em telas menores */
+    }
 }
 
 h1 {

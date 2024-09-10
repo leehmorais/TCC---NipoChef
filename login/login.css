@@ -1,5 +1,10 @@
 body{margin: 0; font-family: "Roboto", sans-serif;}
 
+.logo img {
+    height: 50px; /* Ajuste a altura conforme necessário */
+    width: auto;
+}
+
 .figura{
     width: 40%;
     float: left;
