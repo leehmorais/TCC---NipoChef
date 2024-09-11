@@ -2,3 +2,29 @@
     height: 50px; /* Ajuste a altura conforme necessário */
     width: auto;
 }
+
+.card {
+    width: 100%; /* Ajuste para ocupar 100% da largura do contêiner */
+    max-width: 18rem; /* Define a largura máxima */
+    margin-bottom: 1rem; /* Espaçamento inferior */
+}
+
+.card-img {
+    width: 100%;
+    height: 0;
+    padding-top: 100%; /* Proporção 1x1 */
+    position: relative;
+}
+.card-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta a imagem para cobrir o elemento */
+}
+
+.row {
+    display: flex;
+    justify-content: center; /* Centraliza as colunas horizontalmente */
+}

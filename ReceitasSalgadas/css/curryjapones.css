@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.logo img {
+    height: 50px; /* Ajuste a altura conforme necessário */
+    width: auto;
+}
+
+body {
+    background-color: #f0f0f0;
+    font-family: 'Lato', sans-serif;
+}
+
+.banner {
+    background-image: url(../imgsalg/curryjap.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+}
+
+.footer {
+    background-color: #000000;
+    height: 100%;
+    color: white;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.card {
+    width: 90%; /* Ajustq a largura para um percentual da tela */
+    max-width: 700px; /* Define a largura máxima */
+    margin: 50px auto; /* Centraliza o card com margens automáticas */
+    padding: 20px; /* Ajusta o preenchimento para ser mais responsivo */
+    background-color: white;
+    border-radius: 5px;
+    font-weight: 300;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve para um efeito visual */
+    box-sizing: border-box; 
+}
+
+/* Media query para telas menores */
+@media (max-width: 768px) {
+    .card {
+        padding: 15px; /* Reduz o preenchimento em telas menores */
+    }
+}
+
+h1 {
+    text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+    color: #ff3737;
+    margin-bottom: 20px;
+}
+
+li {
+    list-style-position: inside;
+    line-height: 35px;
+}
+
+ul {
+    margin-bottom: 40px;
+}
+
+.botao {
+    margin-top: 50px;
+    text-decoration: none;
+    background-color: #ff3737;
+    color: white;
+    padding: 15px;
+    font-weight: 400;
+    font-size: 20px;
+    border-radius: 30px;
+}
+
+.botao:hover {
+    background-color: #ff3737;
+}
+
+.titulo-receita {
+    font-weight: 700;
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+.link-footer {
+    font-weight: 700;
+    text-decoration: none;
+    color: white;
+}
