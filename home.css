@@ -7,3 +7,36 @@
     color: brown;
 }
 
+/* Estilo para o rodapé */
+footer {
+    background-color: #343a40; /* Cor de fundo escura */
+  }
+  
+  footer a {
+    color: #ffffff; /* Cor dos links */
+  }
+  
+  footer a:hover {
+    color: #dc3545; /* Cor dos links ao passar o mouse */
+  }
+  
+  /* Estilo para os ícones das redes sociais */
+  .btn-floating {
+    display: inline-block;
+    width: 40px; /* Ajuste o tamanho conforme necessário */
+    height: 40px; /* Ajuste o tamanho conforme necessário */
+    line-height: 40px; /* Centraliza verticalmente o texto dentro do botão */
+    border-radius: 50%;
+    text-align: center;
+    background-color: #6c757d; /* Cor de fundo dos ícones */
+    margin: 0 5px; /* Espaçamento entre os ícones */
+  }
+  
+  .btn-floating i {
+    font-size: 23px; /* Tamanho dos ícones */
+  }
+  
+  .btn-floating:hover {
+    background-color: #dc3545; /* Cor de fundo ao passar o mouse */
+  }
+  

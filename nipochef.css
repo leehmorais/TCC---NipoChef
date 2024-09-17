@@ -7,3 +7,67 @@
     height: 50px; /* Ajuste a altura conforme necessário */
     width: auto;
 }
+
+.container {
+    margin-top: 20px; /* Ajuste conforme necessário */
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap; /* Permite que o conteúdo envolva em telas menores */
+  }
+  
+  .img-fluid {
+    max-width: 100%; /* Faz com que a imagem se ajuste ao tamanho da coluna */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 8px; /* Bordas arredondadas da imagem */
+    max-width: 80%; /* Define uma largura máxima para a imagem */
+  }
+  
+  p {
+    text-align: justify; /* Texto justificado */
+    margin-bottom: 15px; /* Espaçamento entre parágrafos */
+  }
+  
+  @media (max-width: 768px) {
+    .d-flex {
+      justify-content: center; /* Centraliza a imagem em telas menores */
+    }
+  
+    .col-md-6 {
+      margin-bottom: 15px; /* Espaçamento inferior para itens em telas menores */
+    }
+  }
+
+  
+/* Estilo para o título */
+h2 {
+    font-size: 1.75rem; /* Ajusta o tamanho da fonte para subtítulo */
+    font-weight: 600; /* Negrito */
+    color: #dc3545; /* Cor personalizada */
+  }
+  
+  /* Container do mapa */
+  .map-container {
+    position: relative;
+    padding-bottom: 40%; /* Ajusta a razão de aspecto do mapa para menor tamanho */
+    height: 0;
+    overflow: hidden;
+    max-width: 80%; /* Limita a largura máxima do contêiner */
+    border-radius: 8px; /* Bordas arredondadas para o iframe */
+    margin: 0 auto; /* Centraliza horizontalmente */
+  }
+  
+  .map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Espaçamento superior */
+  .container {
+    margin-top: 20px; /* Ajuste conforme necessário */
+  }
+  

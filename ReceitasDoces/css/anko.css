@@ -90,3 +90,57 @@ ul {
     text-decoration: none;
     color: white;
 }
+
+
+.dish-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que as imagens se movam para a linha seguinte se não houver espaço suficiente */
+    justify-content: center; /* Centraliza as imagens horizontalmente */
+    gap: 10px; /* Espaçamento entre as imagens */
+    padding: 10px; /* Espaçamento interno para evitar que as imagens fiquem coladas nas bordas */
+}
+
+/* Estilo básico para as imagens */
+.doce-image {
+    max-width: 100%; /* Garante que as imagens não excedam o tamanho do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Transições suaves para o efeito de hover */
+}
+
+/* Efeito de hover opcional */
+.doce-image:hover {
+    cursor: pointer;
+    transform: scale(1.1); /* Zoom quando o mouse está sobre a imagem */
+    opacity: 0.8; /* Diminui a opacidade quando o mouse está sobre a imagem */
+}
+
+
+
+#timer-container {
+    text-align: center;
+}
+
+#timer {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    padding: 20px;
+    display: inline-block;
+}
+
+#start-timer {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#start-timer:hover {
+    background-color: #b30000;
+}

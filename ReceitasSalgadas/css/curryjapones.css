@@ -3,14 +3,14 @@
     padding: 0;
 }
 
-.logo img {
-    height: 50px; /* Ajuste a altura conforme necessário */
-    width: auto;
-}
-
 body {
     background-color: #f0f0f0;
     font-family: 'Lato', sans-serif;
+}
+
+.logo img {
+    height: 50px; /* Ajuste a altura conforme necessário */
+    width: auto;
 }
 
 .banner {
@@ -38,13 +38,6 @@ body {
     font-weight: 300;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve para um efeito visual */
     box-sizing: border-box; 
-}
-
-/* Media query para telas menores */
-@media (max-width: 768px) {
-    .card {
-        padding: 15px; /* Reduz o preenchimento em telas menores */
-    }
 }
 
 h1 {
@@ -89,4 +82,26 @@ ul {
     font-weight: 700;
     text-decoration: none;
     color: white;
+}
+
+.dish-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que as imagens se movam para a linha seguinte se não houver espaço suficiente */
+    justify-content: center; /* Centraliza as imagens horizontalmente */
+    gap: 10px; /* Espaçamento entre as imagens */
+    padding: 10px; /* Espaçamento interno para evitar que as imagens fiquem coladas nas bordas */
+}
+
+/* Estilo básico para as imagens */
+.salg-image {
+    max-width: 100%; /* Garante que as imagens não excedam o tamanho do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Transições suaves para o efeito de hover */
+}
+
+/* Efeito de hover opcional */
+.salg-image:hover {
+    cursor: pointer;
+    transform: scale(1.1); /* Zoom quando o mouse está sobre a imagem */
+    opacity: 0.8; /* Diminui a opacidade quando o mouse está sobre a imagem */
 }
