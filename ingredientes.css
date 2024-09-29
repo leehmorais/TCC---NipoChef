@@ -2,3 +2,37 @@
     height: 50px; /* Ajuste a altura conforme necessário */
     width: auto;
 }
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    width: 100%;
+    max-width: 800px; /* Ajuste conforme necessário */
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.card-body {
+    text-align: justify;
+    text-align-last: justify; /* Para justificar a última linha também */
+}
+
+.card-text {
+    margin-bottom: 0; /* Remove o espaço extra abaixo do parágrafo se necessário */
+}
+
+.card-title {
+    text-align: left;
+    text-align-last: left;
+}
+
+.card-text {
+    margin-bottom: 1rem; /* Ajuste o valor conforme necessário */
+}

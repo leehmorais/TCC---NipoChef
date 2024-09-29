@@ -15,3 +15,8 @@ h1 {
 p {
     text-align: justify;
 }
+
+.logo img {
+    height: 50px; /* Ajuste a altura conforme necessário */
+    width: auto;
+}

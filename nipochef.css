@@ -21,7 +21,7 @@
     max-width: 100%; /* Faz com que a imagem se ajuste ao tamanho da coluna */
     height: auto; /* Mantém a proporção da imagem */
     border-radius: 8px; /* Bordas arredondadas da imagem */
-    max-width: 80%; /* Define uma largura máxima para a imagem */
+    max-width: 90%; /* Define uma largura máxima para a imagem */
   }
   
   p {

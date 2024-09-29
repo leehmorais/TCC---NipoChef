@@ -12,19 +12,15 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background: #29343e;
 }
 
 .container {
     width: 90%;
     max-width: 1200px;
-    height: auto;
+    margin: 2rem auto; /* Centraliza a container e adiciona margem superior e inferior */
     display: flex;
     flex-wrap: wrap;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, .212);
-    margin-top: 2rem; /* Espaço superior para garantir que o conteúdo não fique colado no topo */
 }
 
 .form-image {
@@ -101,7 +97,7 @@ body {
     gap: 1rem; /* Espaço entre os campos de entrada */
     padding: 1rem 0;
 }
- 
+
 .input-box {
     flex: 1 1 calc(50% - 1rem); /* Ajuste para 50% da largura do contêiner menos o gap */
     display: flex;
@@ -162,6 +158,59 @@ body {
     margin-top: 0;
 }
 
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px; /* distância da borda direita */
+    top: 50%; /* centraliza verticalmente */
+    transform: translateY(-50%); /* ajusta o posicionamento */
+    cursor: pointer;
+    width: 16px; /* tamanho pequeno */
+    height: 16px; /* tamanho pequeno */
+}
+
+
+
+/* Estilos para o rodapé */
+footer {
+    background-color: #343a40; /* Cor do fundo do rodapé */
+    color: #fff; /* Cor do texto do rodapé */
+    width: 100%; /* Garante que o rodapé ocupe toda a largura */
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    margin-top: auto; /* Garante que o rodapé fique na parte inferior da página */
+}
+
+footer .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; /* Centraliza o conteúdo do rodapé */
+}
+
+footer .row {
+    margin-bottom: 1rem;
+}
+
+footer .text-danger {
+    color: #ff6363 !important; /* Cor dos títulos */
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
 @media screen and (max-width: 1330px) {
     .form-image {
         display: none;
@@ -176,29 +225,27 @@ body {
 }
 
 @media screen and (max-width: 1064px) {
-    
     .container {
         flex-direction: column;
         width: 100%;
-        height: auto;
     }
-    
+
     .input-group {
         flex-direction: column;
         overflow: hidden; /* Evita o scroll horizontal desnecessário */
         padding-right: 0;
     }
-    
+
     .input-box {
         flex: 1 1 100%; /* Ocupa toda a largura do contêiner */
     }
-    
+
     .form-image {
         width: 100%;
         display: block;
         padding: 0;
     }
-    
+
     .form-image img {
         display: none;
     }
