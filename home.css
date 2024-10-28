@@ -111,3 +111,7 @@ footer {
   font-weight: bold;
   cursor: pointer;
 }
+
+.card {
+  margin-top: 20px; /* Espaçamento acima do card */
+}

@@ -1,43 +1,49 @@
 <?php
-session_start(); // Inicia a sessão
+session_start();
 
 $servername = "localhost";
-$username = "root"; // Usuário padrão do XAMPP
-$password = ""; // Senha padrão do XAMPP
-$dbname = "cadastro_db"; // Nome do seu banco de dados
+$username = "root";
+$password = "";
+$dbname = "cadastro_db";
 
-// Criar conexão
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar conexão
 if ($conn->connect_error) {
-    die(json_encode(["success" => false, "message" => "Conexão falhou: " . $conn->connect_error]));
+    echo json_encode(["success" => false, "message" => "Conexão falhou: " . $conn->connect_error]);
+    exit;
 }
 
-// Obter dados do formulário
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
-// Prepara a consulta SQL
 $sql = "SELECT * FROM usuarios WHERE email = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $email);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Verificar se o usuário existe e validar a senha
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    
-    // Verificar a senha
+
     if (password_verify($senha, $row['senha'])) {
-        // Salvar dados do usuário na sessão
         $_SESSION['user'] = [
-            'name' => $row['nome_completo'], // Nome completo do usuário
+            'name' => $row['nome_completo'],
             'email' => $row['email'],
-            'phone' => $row['telefone'] // Presumindo que exista uma coluna 'telefone'
+            'phone' => $row['telefone']
         ];
-        echo json_encode(["success" => true, "message" => "Login bem-sucedido!"]);
+        $_SESSION['usuario_logado'] = true;
+
+        // Criar um token aleatório e salvar no banco de dados
+        $token = bin2hex(random_bytes(64));
+        setcookie('user_token', $token, time() + (86400 * 30), "/"); // O cookie expira em 30 dias
+
+        // Atualizar o banco de dados com o token
+        $update_token_sql = "UPDATE usuarios SET token = ? WHERE email = ?";
+        $update_stmt = $conn->prepare($update_token_sql);
+        $update_stmt->bind_param("ss", $token, $email);
+        $update_stmt->execute();
+
+        echo json_encode(["success" => true, "message" => "Login bem-sucedido!", "redirect" => "suaconta.php"]);
     } else {
         echo json_encode(["success" => false, "message" => "Senha incorreta."]);
     }

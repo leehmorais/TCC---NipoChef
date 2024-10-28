@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-Br">
 <head>
@@ -10,50 +11,57 @@
 </head>
 <body>
 <!--Logo abaixo temos o código do NavBar(Menu) onde tem todas as páginas do nosso site-->
-    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="logotipo-navbar">
-          <a href="./nipochef.html" class="logo">
-            <img src="./images/logo/logoNipo.png" alt="Logotipo">
+<nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+  <div class="logotipo-navbar">
+    <a href="./nipochef.html" class="logo">
+      <img src="./images/logo/logoNipo.png" alt="Logotipo">
+    </a>
+  </div>
+
+<div class="container-fluid">
+  <a class="navbar-brand" href="./home.html">NipoChef</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="./home.html">Home</a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Receitas
         </a>
-        </div>
-        <div class="container-fluid">
-          <a class="navbar-brand" href="./home.html">NipoChef</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="../tcc_nipochef/receitasalg.html">Receitas Salgadas</a></li>
+          <li><a class="dropdown-item" href="../tcc_nipochef/receitadoce.html">Receitas Doces</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="../tcc_nipochef/ingredientes.html">Ingredientes</a></li>
+        </ul>
+      </li>
 
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./home.html">Home</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="./login/login.html">Login</a>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Receitas
-                </a>
-
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="./receitasalg.html">Receitas Salgadas</a></li>
-                  <li><a class="dropdown-item" href="./receitadoce.html">Receitas Doces</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="./ingredientes.html">Ingredientes</a></li>
-                </ul>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="./nipochef.html">Conheça nossa marca</a>
-              </li>
-          
-            </ul>
-            
-          </div>
-        </div>
-      </nav> <!--Final do Menu-->
+      <li class="nav-item">
+        <a class="nav-link" href="./nipochef.html">Conheça nossa marca</a>
+      </li>
+    </ul>
+    
+    <ul class="navbar-nav ml-auto">
+      <?php if (isset($_SESSION['user'])): ?>
+          <a class="nav-link" href="./login/suaconta.php">
+              <i class="fas fa-user"></i> <!-- Ícone de conta -->
+          </a>
+      <?php else: ?>
+          <li class="nav-item">
+              <a class="nav-link" href="./login/login.html">Login</a>
+          </li>
+      <?php endif; ?>
+  </ul>
+  </div>
+</div>
+</nav> 
+<!--Final do Menu-->
 
      <!-- Carousel é o nosso banner que estará logo no inicio do site -->
 <div id="carouselExampleCaptions" class="carousel slide">
@@ -104,7 +112,7 @@
             <div class="card" style="width: 18rem;">
                 <img src="./images/imghome/misso.jpg" class="card-img-top" height="250" width="500" alt="Missochiro">
                 <div class="card-body">
-                  <h5 class="card-title">Missoshiro</h5>
+                  <h5 class="card-title">Missoshiro (みそしろ)</h5>
                   <p class="card-text">Sopa de miso é uma sopa tradicional japonesa que consiste em um caldo dashi no qual pasta de miso 
                     amolecida é misturada. Além disso, há muitos ingredientes opcionais que podem ser adicionados dependendo de receitas 
                     regionais e sazonais, e preferência pessoal.</p>
@@ -116,7 +124,7 @@
             <div class="card" style="width: 18rem;">
                 <img src="./images/imghome/mochi-morango.jpg" class="card-img-top" height="250" width="500" alt="Mochi de Morango">
                 <div class="card-body">
-                  <h5 class="card-title">Mochi de Morango</h5>
+                  <h5 class="card-title">Mochi Morango (いちご餅)</h5>
                   <p class="card-text">Está à procura de uma sobremesa fácil, mas que fuja da mesmice? O NipoChef tem a opção 
                     perfeita para você! Esse Mochi de Morango é um doce simples e extremamente saboroso. Além disso, o recheio
                     de sorvete com geleia de morango dá um toque ainda mais especial à sua receita!</p>
@@ -126,13 +134,13 @@
           </div>
           <div class="col">
             <div class="card" style="width: 18rem;">
-                <img src="./images/imghome/onigiri-salmon.jpg" class="card-img-top" height="250" width="500" alt="Onigiri">
+                <img src="./ReceitasSalgadas/imgsalg/yakisoba 1.jpg" class="card-img-top" height="250" width="500" alt="Onigiri">
                 <div class="card-body">
-                  <h5 class="card-title">Onigiri de Salmão</h5>
-                  <p class="card-text">Onigiri (お握り) é um alimento japonês muito tradicional e amplamente consumido no país. 
-                    Trata-se de um bolinho de arroz cozido, muitas vezes envolto por por uma folha de nori (alga marinha japonesa).
-                    Venha já conhecer a versão do Onigiri com salmão para preparar na sua casa!</p>
-                  <a href="#" class="btn btn-danger"> Confira aqui!</a>
+                  <h5 class="card-title">Yakisoba (やきそば)</h5>
+                  <p class="card-text">Este prato, composto por uma mistura saborosa de macarrão, carnes e legumes, tornou-se um clássico 
+                    nos restaurantes orientais e conquistou paladares em todo o mundo. Agora, você terá a oportunidade de preparar sua 
+                    própria versão deliciosa desse prato tão apreciado!</p>
+                  <a href="./ReceitasSalgadas/yakisoba.html" class="btn btn-danger"> Confira aqui!</a>
                 </div>
               </div>
           </div>
@@ -166,42 +174,49 @@
 </div>
 <br><br>
 
-  <!--Algumas perguntas frequentes logo antes do rodapé-->
-  <p class="fs-4 fw-semibold text-capitalize text-center">Perguntas Frequentes:</p>
-  <div class="accordion accordion-flush" id="accordionFlush">
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-          Como faço para me cadastrar?
-        </button>
-      </h2>
-      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
-        <div class="accordion-body">É simples! Na parte superior do nosso site tem uma parte escrito "Login", assim que você clicar irá para a página de Login onde é possível realizar seu cadastro, caso não tenha uma conta!</div>
+    <!--Algumas perguntas frequentes logo antes do rodapé-->
+    <div class="container d-flex justify-content-center">
+      <div class="card text-bg-light" style="max-width: 70%;">
+        <div class="card-body">
+          <p class="fs-4 fw-semibold text-capitalize text-center">Perguntas Frequentes:</p>
+          <div class="accordion accordion-flush" id="accordionFlush">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  Como faço para me cadastrar?
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+                <div class="accordion-body">É simples! Na parte superior do nosso site tem uma parte escrito "Login", assim que você clicar irá para a página de Login onde é possível realizar seu cadastro, caso não tenha uma conta!</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                  Não conheço um dos ingredientes que está na receita
+                </button>
+              </h2>
+              <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+                <div class="accordion-body">Não se preocupe! Acesse na parte superior do site a página "Ingredientes" e encontre o que você procura!</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                  Arroz japonês pode ser feito em uma panela comum?
+                </button>
+              </h2>
+              <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+                <div class="accordion-body">Sim, o arroz japonês pode ser feito em uma panela comum, mas requer um pouco mais de atenção para garantir que a textura fique correta.</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-          Não conheço um dos ingredientes que está na receita
-        </button>
-      </h2>
-      <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
-        <div class="accordion-body">Não se preocupe! Acesse na parte superior do site a página "Ingredientes" e encontre o que você procura!</div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-          Arroz japônes pode ser feito em uma panela comum?
-        </button>
-      </h2>
-      <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
-        <div class="accordion-body">Sim, o arroz japonês pode ser feito em uma panela comum, mas requer um pouco mais de atenção para garantir que a textura fique correta.</div>
-      </div>
-    </div>
-  </div>
-  <br>
-  <!--Fecha as perguntas frequentes-->
+    
+    <br>
+    <!--Fecha as perguntas frequentes-->
 
  <!--Rodapé-->
 <footer class="bg-dark text-white pt-5 pb-4">
@@ -228,7 +243,7 @@
       <!-- Cliente Section -->
       <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
         <h5 class="text-uppercase mb-4 font-weight-bold text-danger">Cliente</h5>
-        <p><a href="./cadastro/suaconta.html" class="text-white" style="text-decoration: none;">Sua conta</a></p>
+        <p><a href="./login/suaconta.php" class="text-white" style="text-decoration: none;">Sua conta</a></p>
         <p><a href="./politica.html" class="text-white" style="text-decoration: none;">Políticas de Privacidade</a></p>
         <p><a href="./termos.html" class="text-white" style="text-decoration: none;">Termos de Uso</a></p>
       </div>

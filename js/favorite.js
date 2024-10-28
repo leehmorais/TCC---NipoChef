@@ -27,30 +27,15 @@ $(document).ready(function() {
     // Carrega os favoritos da localStorage e marca os itens já favoritados
     function loadFavorites() {
         var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        var currentRecipeTitles = $('.card-title').map(function() {
-            return $(this).text();
-        }).get(); // Obtém os títulos das receitas atualmente na página
-
-        // Filtra os favoritos para remover aqueles que não existem mais
-        favorites = favorites.filter(function(recipe) {
-            return currentRecipeTitles.includes(recipe);
-        });
-
-        // Atualiza o localStorage com a lista filtrada
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-
-        // Marca os itens já favoritados
         $('.favorite-button').each(function() {
             var recipeName = $(this).closest('.card').find('.card-title').text();
             if (favorites.includes(recipeName)) {
                 $(this).addClass('favorited').text('✅ Favoritado');
             }
         });
-
-        // Atualiza a lista de favoritos exibida
         updateFavoritesList(favorites);
     }
-  
+
     // Atualiza a lista de favoritos na seção de favoritos
     function updateFavoritesList(favorites) {
         var favoritesList = $('#favorites-list');
@@ -63,13 +48,4 @@ $(document).ready(function() {
             });
         }
     }
-
-    $(document).ready(function() {
-        $('#clear-favorites').on('click', function() {
-            localStorage.removeItem('favorites'); // Remove apenas os favoritos
-            // ou localStorage.clear(); // Remove tudo do localStorage
-            alert('Favoritos limpos!');
-            loadFavorites(); // Atualiza a lista de favoritos na interface
-        });
-    });
 });

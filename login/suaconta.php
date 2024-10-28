@@ -58,10 +58,49 @@
 
 <!-- sua_conta.php -->
 <?php
-session_start(); // Inicia a sessão
+session_start();
+
 if (!isset($_SESSION['user'])) {
-    header('Location: login.html'); // Redireciona se o usuário não estiver autenticado
-    exit();
+    if (isset($_COOKIE['user_token'])) {
+        // Conexão ao banco de dados
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "cadastro_db";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        if ($conn->connect_error) {
+            die("Conexão falhou: " . $conn->connect_error);
+        }
+
+        // Verificar o token no banco de dados
+        $token = $_COOKIE['user_token'];
+        $sql = "SELECT * FROM usuarios WHERE token = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $token);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            // Restaurar a sessão
+            $_SESSION['user'] = [
+                'name' => $row['nome_completo'],
+                'email' => $row['email'],
+                'phone' => $row['telefone']
+            ];
+            $_SESSION['usuario_logado'] = true;
+        } else {
+            // Se o token não for válido, redireciona para o login
+            header('Location: login.html');
+            exit();
+        }
+    } else {
+        // Se não houver sessão ou token, redireciona para o login
+        header('Location: login.html');
+        exit();
+    }
 }
 ?>
 
@@ -176,6 +215,7 @@ if (!isset($_SESSION['user'])) {
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> 
     <script src="./js/suaconta.js"></script>
 </body>
 </html>

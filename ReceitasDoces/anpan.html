@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -54,10 +55,19 @@
               </li>
           
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-danger" type="submit">Pesquisar</button>
-            </form>
+
+            <ul class="navbar-nav ml-auto">
+              <?php if (isset($_SESSION['user'])): ?>
+                  <a class="nav-link" href="../login/suaconta.php">
+                      <i class="fas fa-user"></i> <!-- Ícone de conta -->
+                  </a>
+              <?php else: ?>
+                  <li class="nav-item">
+                      <a class="nav-link" href="../login/login.html">Login</a>
+                  </li>
+              <?php endif; ?>
+          </ul>
+
           </div>
         </div>
       </nav>
