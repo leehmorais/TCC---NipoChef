@@ -1,0 +1,48 @@
+.logo img {
+    height: 50px; /* Ajuste a altura conforme necessário */
+    width: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.recipe {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.recipe img {
+    max-width: 40%;
+    margin: 0 auto; 
+    display: block; 
+    border-radius: 5px;
+}
+
+/* Estilização do botão */
+.btn {
+    display: inline-block; /* Ajusta ao conteúdo do botão */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho do texto */
+    font-weight: bold; /* Negrito */
+    color: #ffffff; /* Texto branco */
+    background-color: #f44336; /* Fundo vermelho */
+    text-decoration: none; /* Remove sublinhado */
+    border-radius: 5px; /* Cantos arredondados */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Efeitos suaves */
+}
+
+/* Botão ao passar o mouse */
+.btn:hover {
+    background-color: #9c2828;
+    color: #e1dfdf;
+    transform: scale(1.10); /* Leve ampliação ao passar o mouse */
+}
+
+/* Centralização do botão */
+.button-container {
+    text-align: center; /* Centraliza o botão horizontalmente */
+    margin-top: 10px; /* Adiciona espaço acima do botão */
+}

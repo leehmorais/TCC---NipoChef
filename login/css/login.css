@@ -93,3 +93,11 @@ body{margin: 0; font-family: "Roboto", sans-serif;}
     .figura, .formulario{ float: none; width: 100%; height: auto;}
 }
 
+#notification {
+    display: none;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.success { background-color: #4CAF50; color: white; }
+.error { background-color: #f44336; color: white; }

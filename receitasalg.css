@@ -42,10 +42,19 @@
   background-color: #e2e6ea; /* Cor ao passar o mouse */
 }
 
-#favorites {
-  margin-top: 30px;
-  border-top: 2px solid #000;
-  padding-top: 20px;
+#favorites-list img {
+  border: 1px solid #ccc;
+  margin-right: 8px;
+}
+.favorite-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 500px;
+}
+.remove-favorite {
+  font-size: 12px;
 }
 
 .d-block{

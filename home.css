@@ -7,6 +7,19 @@
     color: brown;
 }
 
+.d-flex.justify-content-center p.text-center a {
+  color: red !important; /* Torna o texto do link vermelho */
+  text-decoration: none !important; /* Remove a linha abaixo do texto */
+  transition: transform 0.2s, color 0.2s; /* Suaviza a transição ao passar o mouse */
+}
+
+.d-flex.justify-content-center p.text-center a:hover {
+  transform: scale(1.1) !important; /* Aumenta o tamanho do texto */
+  color: darkred !important; /* Escurece o vermelho ao passar o mouse */
+}
+
+
+
 /* Estilo para o rodapé */
 footer {
     background-color: #343a40; /* Cor de fundo escura */
@@ -114,4 +127,37 @@ footer {
 
 .card {
   margin-top: 20px; /* Espaçamento acima do card */
+}
+
+/* Ajuste de tamanho e responsividade */
+.banner-container {
+  max-width: 100%; /* Para limitar o tamanho ao contêiner */
+  margin: 0 auto;  /* Centraliza no contêiner */
+}
+
+.banner-image {
+  max-width: 100%; /* Garante que a largura não exceda o contêiner */
+  height: auto;    /* Mantém a proporção da imagem */
+  max-height: 300px; /* Limita a altura padrão */
+  object-fit: cover; /* Ajusta a imagem sem distorções */
+}
+
+/* Ajuste para telas maiores */
+@media (min-width: 992px) {
+  .banner-image {
+      max-height: 200px; /* Reduz altura para desktops */
+  }
+}
+
+/* Ajustes para dispositivos menores */
+@media (max-width: 768px) {
+  .banner-image {
+      max-height: 250px; /* Reduz altura para tablets */
+  }
+}
+
+@media (max-width: 576px) {
+  .banner-image {
+      max-height: 200px; /* Ainda menor para smartphones */
+  }
 }

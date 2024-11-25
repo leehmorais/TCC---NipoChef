@@ -35,10 +35,10 @@
           Receitas
         </a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="../tcc_nipochef/receitasalg.html">Receitas Salgadas</a></li>
-          <li><a class="dropdown-item" href="../tcc_nipochef/receitadoce.html">Receitas Doces</a></li>
+          <li><a class="dropdown-item" href="./receitasalg.html">Receitas Salgadas</a></li>
+          <li><a class="dropdown-item" href="./receitadoce.html">Receitas Doces</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="../tcc_nipochef/ingredientes.html">Ingredientes</a></li>
+          <li><a class="dropdown-item" href="./ingredientes.html">Ingredientes</a></li>
         </ul>
       </li>
 
@@ -46,21 +46,16 @@
         <a class="nav-link" href="./nipochef.html">Conheça nossa marca</a>
       </li>
     </ul>
-    
+
     <ul class="navbar-nav ml-auto">
-      <?php if (isset($_SESSION['user'])): ?>
-          <a class="nav-link" href="./login/suaconta.php">
-              <i class="fas fa-user"></i> <!-- Ícone de conta -->
-          </a>
-      <?php else: ?>
-          <li class="nav-item">
-              <a class="nav-link" href="./login/login.html">Login</a>
-          </li>
-      <?php endif; ?>
-  </ul>
+         <a class="nav-link" href="./login/suaconta.php">
+             <i class="fas fa-user"></i> <!-- Ícone de conta -->
+         </a>
+ </ul>
   </div>
+  
 </div>
-</nav> 
+</nav>
 <!--Final do Menu-->
       <br>
 

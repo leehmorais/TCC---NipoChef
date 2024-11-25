@@ -35,10 +35,10 @@
           Receitas
         </a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="../tcc_nipochef/receitasalg.html">Receitas Salgadas</a></li>
-          <li><a class="dropdown-item" href="../tcc_nipochef/receitadoce.html">Receitas Doces</a></li>
+          <li><a class="dropdown-item" href="./receitasalg.html">Receitas Salgadas</a></li>
+          <li><a class="dropdown-item" href="./receitadoce.html">Receitas Doces</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="../tcc_nipochef/ingredientes.html">Ingredientes</a></li>
+          <li><a class="dropdown-item" href="./ingredientes.html">Ingredientes</a></li>
         </ul>
       </li>
 
@@ -46,21 +46,16 @@
         <a class="nav-link" href="./nipochef.html">Conheça nossa marca</a>
       </li>
     </ul>
-    
+
     <ul class="navbar-nav ml-auto">
-      <?php if (isset($_SESSION['user'])): ?>
-          <a class="nav-link" href="./login/suaconta.php">
-              <i class="fas fa-user"></i> <!-- Ícone de conta -->
-          </a>
-      <?php else: ?>
-          <li class="nav-item">
-              <a class="nav-link" href="./login/login.html">Login</a>
-          </li>
-      <?php endif; ?>
-  </ul>
+         <a class="nav-link" href="./login/suaconta.php">
+             <i class="fas fa-user"></i> <!-- Ícone de conta -->
+         </a>
+ </ul>
   </div>
+  
 </div>
-</nav> 
+</nav>
 <!--Final do Menu-->
       
       <br>
@@ -78,7 +73,7 @@
             <img src="./ReceitasSalgadas/imgsalg/missoshiro.webp" alt="Missoshiro">
           </div>
           <div class="card-body">
-            <h5 class="card-title">Missoshiro</h5>
+            <h5 class="card-title">Missoshiro (みそしろ)</h5>
             <p class="card-text">↳ Tradicional sopa japonesa feita com pasta de miso. Leve e reconfortante, ela geralmente inclui ingredientes como tofu, algas e cebolinha.</p>
           </div>
         </a>
@@ -93,7 +88,7 @@
             <img src="./ReceitasSalgadas/imgsalg/curry.jpg" alt="Curry Japonês">
           </div>
           <div class="card-body">
-            <h5 class="card-title">Curry Japonês</h5>
+            <h5 class="card-title">Curry Japonês (カレー)</h5>
             <p class="card-text">↳ O curry japonês é uma refeição deliciosa e reconfortante, com molho espesso, levemente adocicado, que envolve carne e legumes sobre arroz macio.</p>
           </div>
         </a>
@@ -108,7 +103,7 @@
             <img src="./ReceitasSalgadas/imgsalg/arroz-japones 1.webp" alt="Gohan">
           </div>
           <div class="card-body">
-            <h5 class="card-title">Gohan</h5>
+            <h5 class="card-title">Gohan (ゴハン)</h5>
             <p class="card-text">↳ Arroz japonês, cozido de forma simples, macio e levemente pegajoso, ideal para acompanhar pratos variados. Versátil e essencial na culinária japonesa!</p>
           </div>
         </a>
@@ -127,7 +122,7 @@
             <img src="./ReceitasSalgadas/imgsalg/Sunomono 1.jpg" alt="Sunomono">
           </div>
           <div class="card-body">
-            <h5 class="card-title">Sunomono</h5>
+            <h5 class="card-title">Sunomono (酢のもの)</h5>
             <p class="card-text">↳ Salada japonesa leve feita com pepino, vinagre, açúcar e gergelim. Equilibrando sabores doces e ácidos, é refrescante e perfeito como acompanhamento.</p>
           </div>
         </a>
@@ -142,8 +137,8 @@
             <img src="./ReceitasSalgadas/imgsalg/tamagoyaki 3.jpg" alt="Tamagoyaki">
           </div>
           <div class="card-body">
-            <h5 class="card-title">Tamagoyaki</h5>
-            <p class="card-text">↳ Omelete japonesa feita com camadas de ovos batidos, açúcar e molho de soja. Leve, fofa e servida em fatias, é deliciosa e versátil!</p>
+            <h5 class="card-title">Tamagoyaki (卵焼き)</h5>
+            <p class="card-text">↳ Omelete japonesa, composta por ovos fritos em diferentes camadas e depois enrolados, açúcar e molho de soja. Leve, fofa e servida em fatias, é deliciosa e versátil!</p>
           </div>
         </a>
         <button class="favorite-button">⭐ Marcar como favorito</button>
@@ -157,7 +152,7 @@
             <img src="./ReceitasSalgadas/imgsalg/temaki 1.jpg" alt="Temaki">
           </div>
           <div class="card-body">
-            <h5 class="card-title">Temaki</h5>
+            <h5 class="card-title">Temaki (手巻)</h5>
             <p class="card-text">↳ Sushi em forma de cone, com alga nori recheada com arroz e ingredientes variados como legumes e peixe. Prático, rápido e delicioso!</p>
           </div>
         </a>
@@ -176,7 +171,7 @@
             <img src="./ReceitasSalgadas/imgsalg/tempura-1.jpg" alt="Tempurá">
           </div>
           <div class="card-body">
-            <h5 class="card-title">Tempurá</h5>
+            <h5 class="card-title">Tempurá (天ぷら)</h5>
             <p class="card-text">↳ Legumes empanados e fritos até ficarem crocantes. Leve e saboroso, é perfeito como aperitivo ou acompanhamento!</p>
           </div>
         </a>
@@ -191,7 +186,7 @@
             <img src="./ReceitasSalgadas/imgsalg/udon 1.jpg" alt="Udon">
           </div>
           <div class="card-body">
-            <h5 class="card-title">Udon</h5>
+            <h5 class="card-title">Udon (うどん)</h5>
             <p class="card-text">↳ Macarrão grosso e chewy, servido em caldos quentes ou com molhos. Uma refeição reconfortante e deliciosa!</p>
           </div>
         </a>
@@ -206,7 +201,7 @@
             <img src="./ReceitasSalgadas/imgsalg/yakisoba 1.jpg" alt="Yakisoba">
           </div>
           <div class="card-body">
-            <h5 class="card-title">Yakisoba</h5>
+            <h5 class="card-title">Yakisoba (やきそば)</h5>
             <p class="card-text">↳ Macarrão frito com legumes e carne, temperado com molho especial. Saboroso e versátil, ideal para qualquer ocasião!</p>
           </div>
         </a>
@@ -220,13 +215,15 @@
 
 <div id="favorites">
   <div class="col-12 text-center mb-4">
-      <h3 class="text-capitalize fw-light text-danger">Receitas Favoritas</h3>
+    <h3 class="text-capitalize fw-light text-danger">Receitas Favoritas</h3>
   </div>
   <ul class="list-unstyled d-flex flex-column align-items-center" id="favorites-list">
-      <!-- Os itens serão inseridos aqui -->
+    <!-- Os itens serão inseridos aqui -->
   </ul>
 </div>
+<button id="clear-favorites">Limpar Favoritos</button>
 <br><br>
+
       <!--Rodapé-->
       <footer class="bg-dark text-white pt-5 pb-4">
         <div class="container text-center text-md-left">
@@ -287,6 +284,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  
-<script src="./js/favorite.js"></script>
-   </body>
+<script src="./js/salgadosfavoritos.js"></script>
+</body>
 </html>

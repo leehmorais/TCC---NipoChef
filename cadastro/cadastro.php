@@ -5,15 +5,12 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "cadastro_db";
-
 // Criar conexão
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 // Verificar conexão
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
-
 // Verificar se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $firstname = trim($_POST['firstname']);
@@ -22,13 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $number = trim($_POST['number']);
     $password = trim($_POST['password']);
     $confirmpassword = trim($_POST['Confirmpassword']);
-
     // Verifica se as senhas coincidem
     if ($password !== $confirmpassword) {
         echo "<script>alert('As senhas não coincidem.'); window.history.back();</script>";
         exit();
     }
-
     // Verifica se o email já está cadastrado
     $stmt = $conn->prepare("SELECT COUNT(*) FROM usuarios WHERE email = ?");
     $stmt->bind_param("s", $email);
@@ -40,17 +35,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
     $stmt->close();
-
     // Hash da senha
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
     // Usando prepared statement para inserir
     $stmt = $conn->prepare("INSERT INTO usuarios (nome_completo, telefone, email, senha) VALUES (?, ?, ?, ?)");
     $nome_completo = "$firstname $lastname";
     $stmt->bind_param("ssss", $nome_completo, $number, $email, $hashed_password);
 
     if ($stmt->execute()) {
-        header("Location: sucessocadastro.html");
+        header("Location: ../cadastro/sucessocadastro.html");
         exit();
     } else {
         echo "<script>alert('Erro ao cadastrar.'); window.history.back();</script>";
@@ -58,6 +51,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt->close();
 }
-
 $conn->close();
 ?>     

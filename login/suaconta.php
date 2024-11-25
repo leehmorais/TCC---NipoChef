@@ -11,50 +11,50 @@
 </head>
 <body>
     <!--Logo abaixo temos o código do NavBar(Menu) onde tem todas as páginas do nosso site-->
-    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body headerTeste" data-bs-theme="dark">
-        <div class="logotipo-navbar">
-          <a href="../nipochef.html" class="logo">
-            <img src="../images/login/logoNipo.png" alt="Logotipo">
-        </a>
-        </div>
-        <div class="container-fluid">
-          <a class="navbar-brand" href="../home.html">NipoChef</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+     <div class="logotipo-navbar">
+       <a href="../nipochef.html" class="logo">
+         <img src="../images/logo/logoNipo.png" alt="Logotipo">
+       </a>
+     </div>
 
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../home.html">Home</a>
-              </li>
+   <div class="container-fluid">
+     <a class="navbar-brand" href="../home.html">NipoChef</a>
+     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+     
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         <li class="nav-item">
+           <a class="nav-link active" aria-current="page" href="../home.html">Home</a>
+         </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="../login/login.html">Login</a>
-              </li>
+         <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Receitas
+           </a>
+           <ul class="dropdown-menu">
+             <li><a class="dropdown-item" href="../receitasalg.html">Receitas Salgadas</a></li>
+             <li><a class="dropdown-item" href="../receitadoce.html">Receitas Doces</a></li>
+             <li><hr class="dropdown-divider"></li>
+             <li><a class="dropdown-item" href="../ingredientes.html">Ingredientes</a></li>
+           </ul>
+         </li>
 
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Receitas
-                </a>
+         <li class="nav-item">
+           <a class="nav-link" href="../nipochef.html">Conheça nossa marca</a>
+         </li>
+       </ul>
 
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="../receitasalg.html">Receitas Salgadas</a></li>
-                  <li><a class="dropdown-item" href="../receitadoce.html">Receitas Doces</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="../ingredientes.html">Ingredientes</a></li>
-                </ul>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="../nipochef.html">Conheça nossa marca</a>
-              </li>
-          
-            </ul>
-            
-          </div>
-        </div>
-      </nav> <!--Final do Menu-->
+       <ul class="navbar-nav ml-auto">
+            <a class="nav-link" href="../login/suaconta.php">
+                <i class="fas fa-user"></i> <!-- Ícone de conta -->
+            </a>
+    </ul>
+     </div>
+   </div>
+</nav> <!--Final do Menu-->
 
 <!-- sua_conta.php -->
 <?php
@@ -62,42 +62,27 @@ session_start();
 
 if (!isset($_SESSION['user'])) {
     if (isset($_COOKIE['user_token'])) {
-        // Conexão ao banco de dados
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "cadastro_db";
-
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        if ($conn->connect_error) {
-            die("Conexão falhou: " . $conn->connect_error);
-        }
-
-        // Verificar o token no banco de dados
+        // Decodificar ou processar o token do cookie
         $token = $_COOKIE['user_token'];
-        $sql = "SELECT * FROM usuarios WHERE token = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $token);
-        $stmt->execute();
-        $result = $stmt->get_result();
 
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            // Restaurar a sessão
+        // Simulação: Decodificando um JSON armazenado no token (se o cookie contém dados JSON)
+        $userData = json_decode($token, true);
+
+        if ($userData && isset($userData['name'], $userData['email'], $userData['phone'])) {
+            // Restaurar a sessão a partir dos dados do cookie
             $_SESSION['user'] = [
-                'name' => $row['nome_completo'],
-                'email' => $row['email'],
-                'phone' => $row['telefone']
+                'name' => $userData['name'],
+                'email' => $userData['email'],
+                'phone' => $userData['phone']
             ];
             $_SESSION['usuario_logado'] = true;
         } else {
-            // Se o token não for válido, redireciona para o login
+            // Caso o token não contenha informações válidas, redirecionar para o login
             header('Location: login.html');
             exit();
         }
     } else {
-        // Se não houver sessão ou token, redireciona para o login
+        // Se o cookie não existir, redirecionar para o login
         header('Location: login.html');
         exit();
     }
@@ -117,40 +102,40 @@ if (!isset($_SESSION['user'])) {
         <section class="mt-4">
             <h2>Atualizar Informações</h2>
             <form id="update-form">
-                <div class="form-group">
-                    <label for="new-name">Nome Completo:</label>
-                    <input type="text" class="form-control" id="new-name" placeholder="Seu Nome Completo" required>
-                </div>
-                <div class="form-group">
-                    <label for="new-email">E-mail:</label>
-                    <input type="email" class="form-control" id="new-email" placeholder="Seu E-mail" required>
-                </div>
-                <div class="form-group">
-                    <label for="new-phone">Telefone:</label>
-                    <input type="tel" class="form-control" id="new-phone" placeholder="Seu Telefone" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-            </form>
+        <div class="form-group">
+            <label for="new-name">Nome Completo:</label>
+            <input type="text" class="form-control" id="new-name" placeholder="Seu Nome Completo" required>
+        </div>
+        <div class="form-group">
+            <label for="new-email">E-mail:</label>
+            <input type="email" class="form-control" id="new-email" placeholder="Seu E-mail" required>
+        </div>
+        <div class="form-group">
+            <label for="new-phone">Telefone:</label>
+            <input type="tel" class="form-control" id="new-phone" placeholder="Seu Telefone" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+    </form>
         </section>
 
         <section class="mt-4">
             <h2>Modificar Senha</h2>
             <form id="password-form">
-                <div class="form-group">
-                    <label for="current-password">Senha Atual:</label>
-                    <input type="password" class="form-control" id="current-password" required>
-                </div>
-                <div class="form-group">
-                    <label for="new-password">Nova Senha:</label>
-                    <input type="password" class="form-control" id="new-password" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirm-password">Confirmar Nova Senha:</label>
-                    <input type="password" class="form-control" id="confirm-password" required>
-                </div>
-                <button type="submit" class="btn btn-success">Atualizar Senha</button>
-                <p class="mt-2">Um e-mail de confirmação será enviado após a atualização da senha.</p>
-            </form>
+    <div class="form-group">
+        <label for="current-password">Senha Atual:</label>
+        <input type="password" class="form-control" id="current-password" name="current_password" required>
+    </div>
+    <div class="form-group">
+        <label for="new-password">Nova Senha:</label>
+        <input type="password" class="form-control" id="new-password" name="new_password" required>
+    </div>
+    <div class="form-group">
+        <label for="confirm-password">Confirmar Nova Senha:</label>
+        <input type="password" class="form-control" id="confirm-password" name="confirm_password" required>
+    </div>
+    <button type="submit" class="btn btn-success">Atualizar Senha</button>
+    <p class="mt-2">Um e-mail de confirmação será enviado após a atualização da senha.</p>
+         </form>
         </section>
 
         <button id="logout-button" class="btn btn-danger mt-4">Sair da Conta</button>
@@ -212,10 +197,11 @@ if (!isset($_SESSION['user'])) {
    <!--final do rodapé-->
     
     <script src="../login/js/logout.js"></script>
+    <script src="../login/js/changepass.js"></script>
+    <script src="../login/js/atualizar.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> 
-    <script src="./js/suaconta.js"></script>
 </body>
 </html>
