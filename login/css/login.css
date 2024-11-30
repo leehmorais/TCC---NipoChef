@@ -69,19 +69,32 @@ body{margin: 0; font-family: "Roboto", sans-serif;}
     margin-bottom: 10px;
 }
 
-.formulario .bt-login{
-    background: #ff6363;
+.formulario .bt-login {
+    background: #ff6363; 
     display: inline-block;
     color: #ffffff;
     width: auto;
     padding: 10px 15px;
+    border: none;
+    border-radius: 5px;     
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
 }
 
-.forgot{
+.formulario .bt-login:hover {
+    background: #ab3c3c; 
+}
+
+.forgot {
     text-decoration: none;
     color: #fff;
-    border-bottom: solid 1px #fff;
+    border-bottom: solid 1px #fff; 
 }
+
+.forgot:hover {
+    text-decoration: underline; 
+}
+
 
 .container-form{
     max-width: 300px;

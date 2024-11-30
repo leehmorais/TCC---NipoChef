@@ -1,9 +1,8 @@
 const URL_API = 'https://tasty.p.rapidapi.com/recipes/list';
-const CHAVE_API = '4f19764c82msh86d1b81fa6e6bfdp1a7a13jsn83690449d64c'; // Substitua pela sua chave de API do RapidAPI
+const CHAVE_API = '4f19764c82msh86d1b81fa6e6bfdp1a7a13jsn83690449d64c'; 
 
 async function buscarReceitasJaponesas() {
     try {
-        // Modifique a URL para incluir um termo de busca
         const resposta = await fetch(`${URL_API}?from=0&size=10&tags=japanese`, {
             method: 'GET',
             headers: {
@@ -22,7 +21,6 @@ async function buscarReceitasJaponesas() {
         console.error('Erro ao buscar receitas:', erro);
     }
 }
-
 function exibirReceitas(receitas) {
     const containerReceitas = document.getElementById('recipe-container');
     containerReceitas.innerHTML = ''; // Limpa o container
@@ -42,7 +40,6 @@ function exibirReceitas(receitas) {
         containerReceitas.appendChild(elementoReceita);
     });
 }
-
 
 // Chama a função para buscar e exibir receitas
 buscarReceitasJaponesas().then(receitas => {

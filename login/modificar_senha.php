@@ -1,107 +1,77 @@
 <?php
 session_start();
-header('Content-Type: application/json; charset=utf-8');
+require '../db_connect.php';
 
-ini_set('display_errors', 0); // Não exibir erros
-ini_set('log_errors', 1); // Logar erros no arquivo do servidor
-error_reporting(E_ALL); // Continuar reportando todos os erros
+header('Content-Type: application/json');
 
-set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-    echo json_encode([
-        'status' => 'error',
-        'message' => "Erro interno: $errstr em $errfile na linha $errline."
-    ]);
-    exit;
-});
-
-require_once '../db_connect.php'; // Conexão com o banco de dados
-
-if (!isset($_SESSION['user'])) {
-    echo json_encode(['status' => 'error', 'message' => 'Usuário não autenticado.']);
-    exit;
+// Verifica se o cookie de autenticação existe
+if (!isset($_COOKIE['user_token'])) {
+    echo json_encode(["status" => "error", "message" => "Token de autenticação não encontrado."]);
+    exit();
 }
 
-// Obtendo o email do usuário autenticado
-$user_email = isset($_SESSION['user']['email']) ? $_SESSION['user']['email'] : null;
-if (!$user_email) {
-    echo json_encode(['status' => 'error', 'message' => 'Não foi possível obter o email do usuário.']);
-    exit;
+// Valida a presença da sessão e do cookie
+if (!isset($_SESSION['usuario_logado']) || $_SESSION['usuario_logado'] !== true) {
+    echo json_encode(["status" => "error", "message" => "Usuário não autenticado."]);
+    exit();
 }
 
-// Obtendo os dados do formulário
-$current_password = isset($_POST['current_password']) ? trim($_POST['current_password']) : null;
-$new_password = isset($_POST['new_password']) ? trim($_POST['new_password']) : null;
-$confirm_password = isset($_POST['confirm_password']) ? trim($_POST['confirm_password']) : null;
+// Dados do usuário armazenados na sessão
+$userName = $_SESSION['user']['name'];
+$userEmail = $_SESSION['user']['email'];
+$userPhone = $_SESSION['user']['phone'];
 
-// Validação básica
-if (!$current_password || !$new_password || !$confirm_password) {
-    echo json_encode(['status' => 'error', 'message' => 'Todos os campos são obrigatórios.']);
-    exit;
-}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $currentPassword = trim($_POST['current_password'] ?? '');
+    $newPassword = trim($_POST['new_password'] ?? '');
+    $confirmPassword = trim($_POST['confirm_password'] ?? '');
 
-// Verificar se as novas senhas coincidem
-if ($new_password !== $confirm_password) {
-    echo json_encode(['status' => 'error', 'message' => 'A nova senha e a confirmação não correspondem.']);
-    exit;
-}
+    try {
+        // Validações
+        if ($newPassword !== $confirmPassword) {
+            throw new Exception("A nova senha e a confirmação não coincidem.");
+        }
 
-// Verificar a senha atual no banco de dados
-$stmt = $conn->prepare("SELECT senha FROM usuarios WHERE email = ?");
-if (!$stmt) {
-    echo json_encode(['status' => 'error', 'message' => 'Erro ao preparar a consulta SQL.']);
-    exit;
-}
+        if (strlen($newPassword) < 6) {
+            throw new Exception("A nova senha deve ter pelo menos 6 caracteres.");
+        }
 
-$stmt->bind_param("s", $user_email);
-$stmt->execute();
-$stmt->bind_result($hashed_password);
-$stmt->fetch();
-$stmt->close();
+        // Consulta a senha atual no banco
+        $stmt = $conn->prepare("SELECT senha FROM usuarios WHERE email = ?");
+        $stmt->bind_param("s", $userEmail); // Usar email como identificador
+        $stmt->execute();
+        $stmt->store_result();
 
-if (!$hashed_password) {
-    echo json_encode(['status' => 'error', 'message' => 'Usuário não encontrado ou senha não definida no banco de dados.']);
-    exit;
-}
+        if ($stmt->num_rows === 0) {
+            throw new Exception("Usuário não encontrado.");
+        }
 
-// Validar a senha atual
-if (!password_verify($current_password, $hashed_password)) {
-    echo json_encode(['status' => 'error', 'message' => 'A senha atual está incorreta.']);
-    exit;
-}
+        $stmt->bind_result($dbPassword);
+        $stmt->fetch();
 
-// Hash da nova senha
-$new_hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+        if (!password_verify($currentPassword, $dbPassword)) {
+            throw new Exception("A senha atual está incorreta.");
+        }
 
-// Atualizar a senha no banco de dados
-$stmt = $conn->prepare("UPDATE usuarios SET senha = ? WHERE email = ?");
-if (!$stmt) {
-    echo json_encode(['status' => 'error', 'message' => 'Erro ao preparar a consulta de atualização.']);
-    exit;
-}
+        // Atualiza a senha
+        $newPasswordHash = password_hash($newPassword, PASSWORD_DEFAULT);
+        $stmt = $conn->prepare("UPDATE usuarios SET senha = ? WHERE email = ?");
+        $stmt->bind_param("ss", $newPasswordHash, $userEmail);
 
-$stmt->bind_param("ss", $new_hashed_password, $user_email);
+        if ($stmt->execute()) {
+            echo json_encode(["status" => "success", "message" => "Senha atualizada com sucesso."]);
+        } else {
+            throw new Exception("Erro ao atualizar a senha.");
+        }
 
-if ($stmt->execute()) {
-    // Enviar e-mail de confirmação
-    $to = $user_email;
-    $subject = "Confirmação de Alteração de Senha";
-    $message = "Olá,\n\nSua senha foi alterada com sucesso.\n\nSe você não solicitou esta alteração, entre em contato conosco imediatamente.";
-    $headers = "From: no-reply@nipochef.com\r\n";
-    $headers .= "Reply-To: suporte@nipochef.com\r\n";
-    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+        $stmt->close();
 
-    if (mail($to, $subject, $message, $headers)) {
-        echo json_encode(['status' => 'success', 'message' => 'Senha atualizada com sucesso. Um e-mail de confirmação foi enviado.']);
-    } else {
-        echo json_encode(['status' => 'error', 'message' => 'Senha atualizada, mas houve um problema ao enviar o e-mail de confirmação.']);
+    } catch (Exception $e) {
+        echo json_encode(["status" => "error", "message" => $e->getMessage()]);
+    } finally {
+        $conn->close();
     }
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'Erro ao atualizar a senha no banco de dados.']);
+    echo json_encode(["status" => "error", "message" => "Método de requisição inválido."]);
 }
-
-echo json_encode(['status' => 'success', 'message' => 'Testando saída JSON']);
-exit;
-
-$stmt->close();
-$conn->close();
 ?>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NipoChef</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./localdevenda.css">
+</head>
+<body>
+<!--Logo abaixo temos o código do NavBar(Menu) onde tem todas as páginas do nosso site-->
+<nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+  <div class="logotipo-navbar">
+    <a href="./nipochef.html" class="logo">
+      <img src="./images/logo/logoNipo.png" alt="Logotipo"></a>
+  </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="./home.html">NipoChef</a>
+     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span></button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="./home.html">Home</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Receitas</a>
+      <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="./receitasalg.html">Receitas Salgadas</a></li>
+          <li><a class="dropdown-item" href="./receitadoce.html">Receitas Doces</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="./ingredientes.html">Ingredientes</a></li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./nipochef.html">Quem Somos</a>
+      </li>
+      <a class="nav-link" href="./localdevenda.html">
+        <i class="fas fa-store"></i> <!-- Ícone de loja (local de venda) -->
+      </a>
+      </ul>
+
+    <ul class="navbar-nav ml-auto"> 
+      <a class="nav-link" href="./login/suaconta.php">
+             <i class="fas fa-user"></i> <!-- Ícone de conta --></a>
+             
+    </ul>
+  </div>
+</div>
+</nav>
+<!--Final do Menu-->
+
+
+<br>
+<h1 class="text-capitalize text-center mb-4 font-weight-bold text-danger">Locais de venda</h1>
+<hr>
+
+<div class="container my-5">
+    <!-- Container para os cards, usando o grid do Bootstrap -->
+    <div class="row row-cols-1 row-cols-md-2 g-4 text-center">
+        <!-- Card 1 -->
+        <div class="col">
+            <div class="card h-100">
+                <img src="./images/logo/logoKampai.png" class="card-img-top" height="350" width="200" alt="Logo da Mercearia Kampai">
+                <div class="card-body">
+                    <p class="card-text">Mercearia Kampai - Produtos Orientais</p>
+                    <p class="card-text">Endereço: Rua Dr. Gurgel, 1205 - Presidente Prudente - SP</p>
+                    <a href="https://www.merceariakampai.com.br/" class="btn btn-danger">Visitar loja</a>
+                </div>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col">
+            <div class="card h-100">
+                <img src="./images/logo/logoHachi8.png" height="350" width="200" class="card-img-top" alt="Logo da loja Hachi8">
+                <div class="card-body">
+                    <p class="card-text">Hachi8 - Coisas do Oriente</p>
+                    <p class="card-text">Praça Doutor Paula de Toledo, 50, Box 18B Mercado Municipal (Parte Interna) - Centro, Taubaté - SP
+                      CEP: 12010-050</p>
+                    <a href="https://www.hachi8.com.br/" class="btn btn-danger">Visitar loja</a>
+                </div>
+            </div>
+        </div> <br>
+
+        <!-- Card 3 -->
+        <div class="col">
+          <div class="card h-100">
+              <img src="./images/logo/logoMiki.png" class="card-img-top" height="350" width="200" alt="Logo da loja Miki">
+              <div class="card-body">
+                  <p class="card-text">Miki - Produtos Orientais - Nacionais e Importados</p>
+                  <p class="card-text">Av. Armando de Andrade, 310 - Taboão da Serra/SP</p>
+                  <a href="https://www.lojamiki.com.br/" class="btn btn-danger">Visitar loja</a>
+              </div>
+          </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="col">
+          <div class="card h-100">
+              <img src="./images/logo/logoCasabueno.webp" height="350" width="200" class="card-img-top" alt="Logo da loja Casa Bueno">
+              <div class="card-body">
+                  <p class="card-text">Casa Bueno - Mercado focado na gastronomia oriental</p>
+                  <p class="card-text">Rua Galvão Bueno, 48 - Liberdade, São Paulo - SP, 01506-000, Aberto das 08:00 às 19:50.</p>
+                  <a href="https://www.casabueno.com.br/" class="btn btn-danger">Visitar loja</a>
+              </div>
+          </div>
+      </div> <br>
+
+     <!-- Card 5 -->
+      <div class="col">
+        <div class="card h-100">
+            <img src="./images/logo/logoAsiaShop.png" class="card-img-top" height="350" width="200" alt="Logo da loja Asia Shop">
+               <div class="card-body">
+                  <p class="card-text">Asia Shop - Produtos Orientais - Nacionais e Importados</p>
+                  <p class="card-text">Rua Conde de Irajá, 297 -
+                    04119-010 - Vila Mariana - São Paulo - SP</p>
+                  <a href="https://www.asiashop.com.br/" class="btn btn-danger">Visitar loja</a>
+               </div>
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="col">
+        <div class="card h-100">
+            <img src="./images/logo/logoJapanFoods.jpeg" height="350" width="200" class="card-img-top" alt="Logo da loja JapanFoods">
+                <div class="card-body">
+                  <p class="card-text">JapanFoods - Empório Oriental</p>
+                  <p class="card-text">Av. Pequeno Príncipe, 942 - Loja 02 - Campeche, Florianópolis - SC</p>
+                  <a href="https://www.japanfoods.com.br/" class="btn btn-danger">Visitar loja</a>
+                </div>
+        </div>
+      </div>
+
+           <!-- Card 7 -->
+           <div class="col">
+            <div class="card h-100">
+                <img src="./images/logo/logo.Urizun.webp" class="card-img-top" height="350" width="200" alt="Logo da loja Urizun">
+                   <div class="card-body">
+                      <p class="card-text">Urizun - Produtos Orientais</p>
+                      <p class="card-text">Nossas lojas: unidade Vila Carrão (SP), unidade Tatuapé (SP) e unidade Mooca (SP), confira no site!</p>
+                      <a href="https://lojavirtual.urizun.com.br/" class="btn btn-danger">Visitar loja</a>
+                   </div>
+            </div>
+          </div>
+          <!-- Card 8 -->
+          <div class="col">
+            <div class="card h-100">
+                <img src="./images/logo/logoKaito.png" height="350" width="200" class="card-img-top" alt="Logo da loja Kaito">
+                    <div class="card-body">
+                      <p class="card-text">Kaito - Loja de produtos orientais online</p>
+                      <p class="card-text">Localizada em Suzano - SP, Horário de Atendimento: Seg à Sex: 08:00 - 17:00
+                        Sábado: 08:00 - 12:00</p>
+                      <a href="https://www.japanfoods.com.br/" class="btn btn-danger">Visitar loja</a>
+                    </div>
+            </div>
+          </div>
+        
+    </div>
+</div>
+
+
+<!--Rodapé-->
+<footer class="bg-dark text-white pt-5 pb-4">
+    <div class="container text-center text-md-left">
+      <div class="row text-center text-md-left">
+  
+        <!-- NipoChef Section -->
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold text-danger">NipoChef</h5>
+          <p>Bem-vindo ao NipoChef, seu guia online para explorar e dominar a culinária japonesa na sua própria cozinha. 
+            Aqui, mergulhamos no mundo fascinante da gastronomia do Japão, oferecendo desde receitas tradicionais como sushi e 
+            tempura até pratos contemporâneos.
+          </p>
+        </div>
+  
+        <!-- Descubra Section -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold text-danger">Descubra</h5>
+          <p><a href="./receitasalg.html" class="text-white" style="text-decoration: none;">Receitas Salgadas</a></p>
+          <p><a href="./receitadoce.html" class="text-white" style="text-decoration: none;">Receitas Doces</a></p>
+          <p><a href="./ingredientes.html" class="text-white" style="text-decoration: none;">Ingredientes</a></p>
+        </div>
+  
+        <!-- Cliente Section -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold text-danger">Cliente</h5>
+          <p><a href="./login/suaconta.php" class="text-white" style="text-decoration: none;">Sua conta</a></p>
+          <p><a href="./politica.html" class="text-white" style="text-decoration: none;">Políticas de Privacidade</a></p>
+          <p><a href="./termos.html" class="text-white" style="text-decoration: none;">Termos de Uso</a></p>
+        </div>
+  
+        <!-- Contatos Section -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold text-danger">Contatos</h5>
+          <p><i class="fas fa-home mr-3"></i>  R. Ipiau, 162 - Jardim Satélite, São José dos Campos - SP, 12230-750</p>
+          <p><i class="fas fa-envelope mr-3"></i>  nipochef2024@gmail.com</p>
+          <p><i class="fas fa-phone mr-3"></i>  +55 12 988566079</p>
+          <p><i class="fas fa-print mr-3"></i>  +01 335 778 88</p>
+        </div>
+      </div>
+  
+      <hr class="mb-4">
+      <div class="row align-items-center">
+        <div class="col-md-7 col-lg-8">
+          <p>Copyright ©2024 Todos os direitos reservados por:
+            <a href="./politica.html" style="text-decoration: none;">
+              <strong class="text-danger">NipoChef</strong>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+   <!--final do rodapé-->
+      
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </body>
+  </html>

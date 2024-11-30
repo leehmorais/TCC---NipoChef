@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     new_password: newPassword,
                     confirm_password: confirmPassword
                 })
-            });
+            });            
         
             const textResult = await response.text();
             console.log('Resposta bruta recebida do servidor:', textResult);

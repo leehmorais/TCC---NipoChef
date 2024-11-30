@@ -13,39 +13,52 @@
 <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
   <div class="logotipo-navbar">
     <a href="./nipochef.html" class="logo">
-      <img src="./images/logo/logoNipo.png" alt="Logotipo"></a>
+      <img src="./images/logo/logoNipo.png" alt="Logotipo">
+    </a>
   </div>
-  <div class="container-fluid">
-    <a class="navbar-brand" href="./home.html">NipoChef</a>
-     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
-     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span></button>
+
+<div class="container-fluid">
+  <a class="navbar-brand" href="./home.html">NipoChef</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="./home.html">Home</a>
       </li>
+
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Receitas</a>
-      <ul class="dropdown-menu">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Receitas
+        </a>
+        <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="./receitasalg.html">Receitas Salgadas</a></li>
           <li><a class="dropdown-item" href="./receitadoce.html">Receitas Doces</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item" href="./ingredientes.html">Ingredientes</a></li>
         </ul>
       </li>
+
       <li class="nav-item">
-        <a class="nav-link" href="./nipochef.html">Conheça nossa marca</a>
+        <a class="nav-link" href="./nipochef.html">Quem Somos</a>
       </li>
-      </ul>
+      <a class="nav-link" href="./localdevenda.html">
+        <i class="fas fa-store"></i> <!-- Ícone de loja (local de venda) -->
+      </a>
+    </ul>
+
     <ul class="navbar-nav ml-auto">
          <a class="nav-link" href="./login/suaconta.php">
-             <i class="fas fa-user"></i> <!-- Ícone de conta --></a>
-    </ul>
+             <i class="fas fa-user"></i> <!-- Ícone de conta -->
+         </a>
+ </ul>
   </div>
+  
 </div>
 </nav>
-<!--Final do Menu-->
+      <!--Fim da navbar-->
 
      <!-- Carousel é o nosso banner que estará logo no inicio do site -->
 <div id="carouselExampleCaptions" class="carousel slide">
@@ -130,33 +143,49 @@
             </div>
         </div>
     </div>    
-  <br><br><br> <!--Aqui fechou os cards e deu espaço com o comando br-->
+  <br><br> <!--Aqui fechou os cards e deu espaço com o comando br-->
 
-  <!--A seguir uma galeria que vai abrir imagens de algumas receitas destaque do nosso site em 
-  pop ups utilizando jquery-->
-  <div class="col-12 text-center mb-4">
-  <h2 class="text-capitalize fw-light text-danger">Receitas em Destaque</h2>
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <a href="./ReceitasDoces/dango.html" class="text-decoration-none"> <!-- Link do Card -->
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="./ReceitasDoces/imgdoce/dangobalango.jpg" class="img-fluid" style="object-fit: cover; width: 100%; height: 100%;" alt="Dango, bolinho de massa tradicional">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Dango (団子)</h5>
+                <p class="card-text">Manga, anime e cultura japonesa estão a tornar-se cada vez mais populares, o que fez com que a sua cozinha se tornasse cada vez mais 
+                  conhecida. Esta realidade não afecta apenas os pratos apetitosos, mas também os doces. Dango é um bolinho de massa tradicional japonês feito de arroz glutinoso, açúcar 
+                  e água. Conheça a receita e se aventure nos sabores e diversão que ela possa te oferecer!!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-4">
+      <a href="./ReceitasDoces/harumaki.html" class="text-decoration-none"> <!-- Link do Card -->
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="./ReceitasDoces/imgdoce/harumakisweet.png" class="img-fluid" style="object-fit: cover; width: 100%; height: 100%;" alt="Bolinho de Primavera ou Harumaki">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Harumaki (はるまき)</h5>
+                <p class="card-text">O harumaki, conhecido no Brasil como rolinho primavera, é uma iguaria de origem chinesa que conquistou o paladar dos japoneses e, mais tarde, 
+                  dos brasileiros. É composto por uma massa à base de farinha de trigo bem fininha enrolada e recheada de diferentes ingredientes, que podem ser doces ou salgados.
+                  Clique aqui e aprenda já como fazer para incrementar novas receitas deliciosas no cardápio de sua casa!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
   </div>
-  <div class="d-flex justify-content-center">
-  <p class="text-center mx-4 my-3" style="max-width: 940px;">As receitas mais procuradas em nosso site são o <a href="./ReceitasSalgadas/gohan.html">arroz japônes</a> que é utilizado na maioria dos pratos salgados,
-     o <a href="./ReceitasSalgadas/tempura.html">tempurá</a> bem conhecido pelos brasileiros e também o <a href="./ReceitasDoces/mochi.html">mochi</a>, um doce japonês bem comum. Clique em suas respectivas
-     imagens a seguir para uma melhor visualização e, caso sinta vontade de aprender uma dessas deliciosas comidas vá para
-     nossa aba de receitas e comece já, está esperando o que?
-  </p>
-</div>
-  
-  <div class="gallery">
-    <img src="./ReceitasSalgadas/imgsalg/gohan.jpg" alt="Gohan - Arroz japonês" class="gallery-item">
-    <img src="./ReceitasSalgadas/imgsalg/tempura-1.jpg" alt="Tempurá" class="gallery-item">
-    <img src="./ReceitasDoces/imgdoce/mochii.jpg" alt="Mochi" class="gallery-item">
-</div>
-
-<div id="modal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="img01">
-    <div id="caption"></div>
-</div>
-<br><br>
+  <br><br>
 
 <!--Clicar para ser direcionado à API-->
 <div class="card text-bg-dark mx-auto" style="max-width: 60%;">
@@ -167,8 +196,33 @@
       <p class="card-text" style="color: white;">Aqui você encontra algumas receitas em formato de vídeo</p>
     </div>
   </a>
-</div>
+</div> <br><br>
   
+    <!--A seguir uma galeria que vai abrir imagens de algumas receitas destaque do nosso site em 
+  pop ups utilizando jquery-->
+  <div class="col-12 text-center mb-4">
+    <h2 class="text-capitalize fw-light text-danger">Receitas em Destaque</h2>
+    </div>
+    <div class="d-flex justify-content-center">
+    <p class="text-center mx-4 my-3" style="max-width: 940px;">As receitas mais procuradas em nosso site são o <a href="./ReceitasSalgadas/gohan.html">arroz japônes</a> que é utilizado na maioria dos pratos salgados,
+       o <a href="./ReceitasSalgadas/tempura.html">tempurá</a> bem conhecido pelos brasileiros e também o <a href="./ReceitasDoces/mochi.html">mochi</a>, um doce japonês bem comum. Clique em suas respectivas
+       imagens a seguir para uma melhor visualização e, caso sinta vontade de aprender uma dessas deliciosas comidas vá para
+       nossa aba de receitas e comece já, está esperando o que?
+    </p>
+  </div>
+    
+    <div class="gallery">
+      <img src="./ReceitasSalgadas/imgsalg/gohan.jpg" alt="Gohan - Arroz japonês" class="gallery-item">
+      <img src="./ReceitasSalgadas/imgsalg/tempura-1.jpg" alt="Tempurá" class="gallery-item">
+      <img src="./ReceitasDoces/imgdoce/mochii.jpg" alt="Mochi" class="gallery-item">
+  </div>
+  
+  <div id="modal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img01">
+      <div id="caption"></div>
+  </div>
+  <br><br>
 
  <!--Algumas perguntas frequentes logo antes do rodapé-->
  <div class="container d-flex justify-content-center">
@@ -272,5 +326,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./js/galeriahome.js"></script>
+    <script src="./js/menu.js"></script>
 </body>
 </html>

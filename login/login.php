@@ -35,6 +35,7 @@ if ($result->num_rows > 0) {
         // Criar e configurar o cookie de token de sessão (expira em 30 dias)
         $token = bin2hex(random_bytes(64));
         setcookie('user_token', $token, time() + (86400 * 30), "/"); // Expira em 30 dias
+
         // Redireciona para suaconta.php
         header("Location: suaconta.php");
         exit();

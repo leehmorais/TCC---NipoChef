@@ -45,6 +45,9 @@
          <li class="nav-item">
            <a class="nav-link" href="../nipochef.html">Conheça nossa marca</a>
          </li>
+         <a class="nav-link" href="../localdevenda.html">
+          <i class="fas fa-store"></i> <!-- Ícone de loja (local de venda) -->
+        </a>
        </ul>
 
        <ul class="navbar-nav ml-auto">
@@ -134,7 +137,6 @@ if (!isset($_SESSION['user'])) {
         <input type="password" class="form-control" id="confirm-password" name="confirm_password" required>
     </div>
     <button type="submit" class="btn btn-success">Atualizar Senha</button>
-    <p class="mt-2">Um e-mail de confirmação será enviado após a atualização da senha.</p>
          </form>
         </section>
 
