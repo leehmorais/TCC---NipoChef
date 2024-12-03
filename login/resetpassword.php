@@ -1,44 +1,72 @@
 <?php
-require '../db_connect.php'; // Certifique-se de que o caminho está correto
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
+session_start();
+require '../db_connect.php';
 
-    // Verificar se as senhas coincidem
-    if ($password !== $confirm_password) {
-        echo "<script>alert('As senhas não coincidem.'); window.location.href='resetpass.html';</script>";
-        exit();
+header('Content-Type: application/json');
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405); // Método não permitido
+    echo json_encode(["status" => "error", "message" => "Método de requisição inválido."]);
+    exit();
+}
+
+$emailConfirm = trim($_POST['email_confirm'] ?? '');
+$newPassword = trim($_POST['password'] ?? '');
+$confirmPassword = trim($_POST['confirm_password'] ?? '');
+
+try {
+    // Validações
+    if (empty($emailConfirm) || empty($newPassword) || empty($confirmPassword)) {
+        throw new Exception("Todos os campos são obrigatórios.");
     }
 
-    // Validação da senha
-    if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $password)) {
-        echo "<script>alert('A senha não atende aos requisitos mínimos.'); window.location.href='resetpass.html';</script>";
-        exit();
+    if ($newPassword !== $confirmPassword) {
+        throw new Exception("A nova senha e a confirmação não coincidem.");
     }
 
-    // Verificar se o email existe no banco de dados
-    $stmt = $conn->prepare("SELECT email FROM usuarios WHERE email = ?");
-    $stmt->bind_param("s", $email);
+    if (!filter_var($emailConfirm, FILTER_VALIDATE_EMAIL)) {
+        throw new Exception("E-mail inválido.");
+    }
+
+    if (strlen($newPassword) < 8) {
+        throw new Exception("A senha deve ter no mínimo 8 caracteres.");
+    }
+
+    // Verifica se o e-mail existe no banco de dados
+    $stmt = $conn->prepare("SELECT idusuarios FROM usuarios WHERE email = ?");
+    $stmt->bind_param("s", $emailConfirm);
     $stmt->execute();
-    $result = $stmt->get_result();
+    $stmt->store_result();
 
-    if ($result->num_rows === 0) {
-        echo "<script>alert('Email não encontrado.'); window.location.href='resetpass.html';</script>";
-        exit();
+    if ($stmt->num_rows === 0) {
+        throw new Exception("E-mail não encontrado.");
     }
 
-    // Se o email existe, atualizar a senha
-    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-    $stmt = $conn->prepare("UPDATE usuarios SET senha = ? WHERE email = ?");
-    $stmt->bind_param("ss", $hashedPassword, $email);
+    // Atualiza a senha no banco de dados
+    $newPasswordHash = password_hash($newPassword, PASSWORD_DEFAULT);
+    $stmtUpdate = $conn->prepare("UPDATE usuarios SET senha = ? WHERE email = ?");
+    $stmtUpdate->bind_param("ss", $newPasswordHash, $emailConfirm);
 
-    if ($stmt->execute()) {
-        echo "<script>alert('Senha alterada com sucesso!'); window.location.href='login.php';</script>";
+    if ($stmtUpdate->execute()) {
+        // Sucesso: Finalize o script imediatamente
+        http_response_code(200);
+        echo json_encode([
+            "status" => "success",
+            "message" => "Senha atualizada com sucesso.",
+            "redirect" => "../login/login.php"
+        ]);
         exit();
     } else {
-        echo "<script>alert('Erro ao alterar a senha. Tente novamente mais tarde.'); window.location.href='resetpass.html';</script>";
-        exit();
+        throw new Exception("Erro ao atualizar a senha.");
     }
+} catch (Exception $e) {
+    http_response_code(400); // Bad Request
+    echo json_encode(["status" => "error", "message" => $e->getMessage()]);
+    exit();
+} finally {
+    // Libera recursos do banco
+    if (isset($stmt)) $stmt->close();
+    if (isset($stmtUpdate)) $stmtUpdate->close();
+    $conn->close();
 }
 ?>

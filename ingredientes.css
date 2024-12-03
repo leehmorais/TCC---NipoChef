@@ -1,38 +1,72 @@
 .logo img {
-    height: 50px; /* Ajuste a altura conforme necessário */
+    height: 50px; 
     width: auto;
 }
 
-.card-container {
+
+.container {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .card-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.card {
+    gap: 1rem; /* Espaçamento entre os cards */
+  }
+  
+  .card {
     width: 100%;
-    max-width: 800px; /* Ajuste conforme necessário */
-}
-
-.img-fluid {
+    max-width: 850px;
+    border-radius: 8px; 
+    background-color: #1f1f1f; 
+    color: white; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+  }
+  
+  .card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); 
+  }
+  
+  .img-fluid {
     max-width: 100%;
-    height: auto;
-}
-
-.card-body {
+    height: 100%;
+    border-radius: 8px 0 0 8px; 
+  }
+  
+  .card-body {
+    padding: 1.5rem; 
     text-align: justify;
-    text-align-last: justify; /* Para justificar a última linha também */
-}
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    color: #ff4d4d; 
+    margin-bottom: 1rem;
+  }
+  
+  .card-text {
+    margin-bottom: 1rem;
+    line-height: 1.6; 
+  }
+  
+  
+  .card-body p {
+    color: #ffffff; 
+  }
 
-.card-text {
-    margin-bottom: 0; /* Remove o espaço extra abaixo do parágrafo se necessário */
-}
-
-.card-title {
-    text-align: left;
-    text-align-last: left;
-}
-
-.card-text {
-    margin-bottom: 1rem; /* Ajuste o valor conforme necessário */
-}
+  .card-body p:last-child {
+    margin-bottom: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .card {
+      width: 100%;
+    }
+    .img-fluid {
+      border-radius: 8px;
+    }
+  }  

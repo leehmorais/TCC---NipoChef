@@ -1,5 +1,5 @@
 const URL_API = 'https://tasty.p.rapidapi.com/recipes/list';
-const CHAVE_API = '4f19764c82msh86d1b81fa6e6bfdp1a7a13jsn83690449d64c'; 
+const CHAVE_API = 'cfae1091c4msh3f5328510676a5ap1cabd5jsn4672b85d1187'; 
 
 async function buscarReceitasJaponesas() {
     try {

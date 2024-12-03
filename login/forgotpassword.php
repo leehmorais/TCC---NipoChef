@@ -1,10 +1,9 @@
 <?php
-require '../db_connect.php'; // Certifique-se de que o caminho está correto
+require '../db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
 
-    // Verificar se o email existe no banco de dados
     $stmt = $conn->prepare("SELECT email FROM usuarios WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -15,8 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    // Redirecionar para a página de redefinir senha, passando o email via GET
-    header("Location: resetpass.html?email=" . urlencode($email));
+    // Redireciona sem parâmetros sensíveis na URL
+    echo "<script>window.location.href='resetpass.html';</script>";
     exit();
 }
 ?>

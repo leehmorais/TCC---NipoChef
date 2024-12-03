@@ -3,7 +3,7 @@
     width: auto;
 }
 
-.container {
+.reset-password .container {
     max-width: 550px;
     margin-top: 50px;
     background-color: white;
@@ -11,30 +11,36 @@
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.form-group {
+
+.reset-password .form-group {
     margin-bottom: 15px;
 }
-.btn-danger-custom {
+
+.reset-password .btn-danger-custom {
     background-color: #dc3545; /* Vermelho (Danger) */
     color: white;
     width: 60%; /* Ajuste a largura para 60% */
     display: block; /* Torna o botão um bloco */
     margin: 0 auto; /* Centraliza o botão */
 }
-.btn-danger-custom:hover {
+
+.reset-password .btn-danger-custom:hover {
     background-color: #c82333; /* Vermelho mais escuro */
 }
-.btn-outline-dark-custom {
+
+.reset-password .btn-outline-dark-custom {
     color: #343a40;
     border-color: #343a40;
     width: 60%; /* Ajuste a largura para 60% */
     display: block; /* Torna o botão um bloco */
     margin: 0 auto; /* Centraliza o botão */
 }
-.btn-outline-dark-custom:hover {
+
+.reset-password .btn-outline-dark-custom:hover {
     background-color: #343a40;
     color: white;
 }
-p {
+
+.reset-password p {
     text-align: center;
 }

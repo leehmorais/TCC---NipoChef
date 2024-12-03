@@ -88,7 +88,6 @@ body{margin: 0; font-family: "Roboto", sans-serif;}
 .forgot {
     text-decoration: none;
     color: #fff;
-    border-bottom: solid 1px #fff; 
 }
 
 .forgot:hover {
